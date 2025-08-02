@@ -14,7 +14,7 @@ class GradeHallucinations(BaseModel):
         description = "Answer is grounded in the facts, 'yes' or 'no'"
     )
     
-structured_llm_grader = llm.with_structured_prompt(GradeHallucinations)
+structured_llm_grader = llm.with_structured_output(GradeHallucinations)
 
 system = """
 You are a grader assessing whether an LLM generation is grounded in / supported by a set of retrieved facts. \n

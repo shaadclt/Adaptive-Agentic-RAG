@@ -12,7 +12,7 @@ class RouteQuery(BaseModel):
 
 llm = llm_model
 
-structured_llm_router = llm.with_structured_prompt(RouteQuery)
+structured_llm_router = llm.with_structured_output(RouteQuery)
 
 system = """
     You are an expert at routing a user question to a vectorstore or websearch.
