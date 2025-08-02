@@ -29,3 +29,10 @@ grade_prompt = ChatPromptTemplate.from_messages(
 )
 
 retrieval_grader = grade_prompt | structured_llm_grader
+
+
+"""
+The retrieval grader acts as a quality control mechanism that evaluates whether retrieved documents are actually relevant to the user's question. 
+This component is crucial because vector similarity alone doesn't guarantee relevance — documents might be semantically similar but contextually inappropriate.
+The GradeDocuments model ensures we get a clean binary decision from the LLM. The system prompt instructs the grader to look for both explicit keywords and semantic meaning, providing a comprehensive relevance assessment. This grading step prevents irrelevant documents from contaminating our generation process and triggers web search when local documents are insufficient.
+"""

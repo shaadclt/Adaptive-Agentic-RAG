@@ -24,4 +24,12 @@ route_prompt = ChatPromptTemplate.from_messages([
     ("human", "{question}"),
 ])
 
-question_router = route_prompt | structured_llm_router    
+question_router = route_prompt | structured_llm_router
+
+
+"""
+The query router is the system's first decision point that determines the optimal source for answering a user's question. 
+We define a RouteQuery Pydantic model that constrains the router's output to either "vectorstore" or "websearch", ensuring reliable parsing of the LLM's decision.
+The system prompt clearly defines the scope of our local knowledge base, instructing the router to use the vectorstore for questions about agents, prompt engineering, and adversarial attacks, while routing everything else to web search.
+This intelligent routing prevents unnecessary web searches for topics we have comprehensive local knowledge about.
+"""    

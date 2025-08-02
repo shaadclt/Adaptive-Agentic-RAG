@@ -27,3 +27,9 @@ answer_prompt = ChatPromptTemplate.from_messages(
 
 answer_grader: RunnableSequence = answer_prompt | structured_llm_grader
 
+"""
+The answer grader evaluates whether the generated response actually addresses the user's question. 
+Even if a response is factually grounded, it might not directly answer what the user asked.
+This component ensures that our system provides responses that are both accurate and relevant to the specific query. 
+The grader checks if the generation resolves the question, and if not, the system can trigger additional retrieval or web search to find more appropriate information.
+"""

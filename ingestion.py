@@ -33,3 +33,13 @@ vectorstore = Chroma.from_documents(
 
 # Create retriever
 retriever = vectorstore.as_retriever()
+
+
+"""
+This ingestion pipeline forms the backbone of our local knowledge base. 
+We start by loading environment variables, then define a curated list of URLs containing high-quality content about AI agents, prompt engineering, and adversarial attacks.
+The WebBaseLoader fetches content from these URLs and loads them into document objects. 
+We then use the RecursiveCharacterTextSplitter to break down these documents into smaller, manageable chunks of 250 tokens each, which is optimal for embedding and retrieval. 
+The splitter uses tiktoken encoding to ensure accurate token counting.
+Finally, we create a Chroma vector store that will persist our embeddings locally, using Google's text-embedding-004 model for high-quality semantic representations.
+"""

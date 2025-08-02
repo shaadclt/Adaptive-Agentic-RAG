@@ -29,3 +29,11 @@ hallucination_prompt = ChatPromptTemplate.from_messages(
 )
 
 hallucination_grader: RunnableSequence = hallucination_prompt | structured_llm_grader
+
+"""
+The hallucination grader is perhaps the most critical component for ensuring the reliability of our RAG system. 
+It compares the generated response against the retrieved documents to verify that the information is factually grounded.
+This prevents the system from generating plausible-sounding but factually incorrect responses. 
+The grader uses a Boolean score to indicate whether the generation is supported by the provided facts.
+When hallucinations are detected, our system can trigger regeneration or seek additional information, ensuring that users receive accurate and trustworthy responses.
+"""
